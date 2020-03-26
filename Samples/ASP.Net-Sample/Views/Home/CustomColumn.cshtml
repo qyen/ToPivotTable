@@ -1,0 +1,38 @@
+﻿@model ASP.Net_Sample.Controllers.HomeController.IndexViewModel
+@{
+    ViewBag.Title = "Custom Column";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@Html.RenderPivotTable(Model.pivot, Model.Option)
+
+<h2>Code</h2>
+
+<h4>HomeController</h4>
+<pre><code class="lang-c#">
+public ActionResult CustomColumn(IndexViewModel model) {
+    var DB = SampleDB.Data.Where(mock => mock.Job.StartsWith("A"));
+    model.pivot = DB.ToPivotTable(
+                        new List<PivotColumn<MockData>>() {
+                            new PivotColumn<MockData>("initial",(t)=>t.car.Substring(0,1),(t)=>t.car.Substring(0,1)),
+                            new PivotColumn<MockData>("car"),
+                        },
+                        new List<PivotColumn<MockData>>() {
+                            new PivotColumn<MockData>("category",(t)=>t.Job.Split(' ').First(),(t)=>t.Job.Split(' ').First()),
+                            new PivotColumn<MockData>("Job",(t)=>string.Join(" ",t.Job.Split(' ').Skip(1))),
+                        },
+                        new List<PivotMeasure<MockData>>() {
+                            PivotMeasure<MockData>.Average("Avg",(t)=>t.cash),
+                        }
+                    );
+    return View(model);
+}
+</code></pre>
+
+<h4>Index.cshtml</h4>
+
+<pre><code class="lang-c#">
+    @Html.Raw("@Html.RenderPivotTable(Model.pivot, Model.Option)")
+</code></pre>
+

@@ -1,0 +1,133 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+table.pivot {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0px;
+    @ColHeaderBaseColor: #1E5799;
+    @RowHeaderBaseColor: #608060;
+    @BorderColor: #ddd;
+    @measureTitleColor: #b0d0d0;
+
+    .number {
+        text-align: right;
+    }
+
+    .rowtitle {
+        .gradientCell(darken(@RowHeaderBaseColor,10%));
+    }
+
+    th, td {
+        padding: 5px;
+        white-space: nowrap;
+    }
+
+    .cornerHeader {
+        background-color: white;
+    }
+
+    .gradientCell(@CellBaseColor) {
+        color: white;
+        background: @CellBaseColor;
+        background: -moz-linear-gradient(top, @CellBaseColor 0%, darken(@CellBaseColor,10%) 60%, lighten(@CellBaseColor,10%) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, @CellBaseColor 0%, darken(@CellBaseColor,10%) 60%, lighten(@CellBaseColor,10%) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, @CellBaseColor 0%, darken(@CellBaseColor,10%) 60%, lighten(@CellBaseColor,10%) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+
+    .headerRowMixin(@ColHeaderBGColor: @ColHeaderBaseColor) {
+        th {
+            color: white;
+            border-right: #ccc 1px solid;
+            border-bottom: #ccc 1px solid;
+        }
+
+        .coltitle {
+            background-color: darken(@ColHeaderBGColor,5%);
+        }
+
+        .cell {
+            .gradientCell(@ColHeaderBGColor);
+        }
+
+        .colGrandTotal {
+            .gradientCell(darken(@ColHeaderBGColor,10%));
+        }
+    }
+
+    tr.headerRow:nth-child(1) {
+        .headerRowMixin(@ColHeaderBaseColor)
+    }
+
+    tr.headerRow:nth-child(2) {
+        .headerRowMixin(lighten(@ColHeaderBaseColor,10%));
+    }
+
+    tr.headerRow:nth-child(3) {
+        .headerRowMixin(lighten(@ColHeaderBaseColor,20%));
+    }
+
+    tr.headerRow:nth-child(4) {
+        .headerRowMixin(lighten(@ColHeaderBaseColor,30%));
+    }
+
+    .measureTitle {
+        .gradientCell(@measureTitleColor);
+        white-space: nowrap;
+    }
+
+    tr.dataRow {
+        td, th {
+            border-bottom: @BorderColor 1px solid;
+        }
+
+        &:hover {
+            background-color: #eee;
+        }
+
+        th.cell {
+            vertical-align: top;
+            border-right: #ccc 1px solid;
+            border-bottom: #ccc 1px solid;
+
+            &.ch-0 {
+                .gradientCell(lighten(@RowHeaderBaseColor,10%));
+            }
+
+            &.ch-1 {
+                .gradientCell(lighten(@RowHeaderBaseColor,20%));
+            }
+
+            &.ch-2 {
+                .gradientCell(lighten(@RowHeaderBaseColor,30%));
+            }
+
+            &.GrandTotal {
+                .gradientCell(darken(@RowHeaderBaseColor,10%));
+            }
+        }
+    }
+}

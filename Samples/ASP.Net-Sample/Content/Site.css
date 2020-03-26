@@ -1,0 +1,222 @@
+﻿body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+  white-space: normal;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+  max-width: 280px;
+}
+table.pivot {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+table.pivot .number {
+  text-align: right;
+}
+table.pivot .rowtitle {
+  color: white;
+  background: #4a634a;
+  background: -moz-linear-gradient(top, #4a634a 0%, #344634 60%, #608060 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #4a634a 0%, #344634 60%, #608060 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #4a634a 0%, #344634 60%, #608060 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot th,
+table.pivot td {
+  padding: 5px;
+  white-space: nowrap;
+}
+table.pivot .cornerHeader {
+  background-color: white;
+}
+table.pivot tr.headerRow:nth-child(1) th {
+  color: white;
+  border-right: #ccc 1px solid;
+  border-bottom: #ccc 1px solid;
+}
+table.pivot tr.headerRow:nth-child(1) .coltitle {
+  background-color: #1a4b84;
+}
+table.pivot tr.headerRow:nth-child(1) .cell {
+  color: white;
+  background: #1E5799;
+  background: -moz-linear-gradient(top, #1E5799 0%, #163f6e 60%, #266fc4 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #1E5799 0%, #163f6e 60%, #266fc4 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #1E5799 0%, #163f6e 60%, #266fc4 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot tr.headerRow:nth-child(1) .colGrandTotal {
+  color: white;
+  background: #163f6e;
+  background: -moz-linear-gradient(top, #163f6e 0%, #0d2744 60%, #1e5799 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #163f6e 0%, #0d2744 60%, #1e5799 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #163f6e 0%, #0d2744 60%, #1e5799 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot tr.headerRow:nth-child(2) th {
+  color: white;
+  border-right: #ccc 1px solid;
+  border-bottom: #ccc 1px solid;
+}
+table.pivot tr.headerRow:nth-child(2) .coltitle {
+  background-color: #2263ae;
+}
+table.pivot tr.headerRow:nth-child(2) .cell {
+  color: white;
+  background: #266fc4;
+  background: -moz-linear-gradient(top, #266fc4 0%, #1e5799 60%, #4389da 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #266fc4 0%, #1e5799 60%, #4389da 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #266fc4 0%, #1e5799 60%, #4389da 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot tr.headerRow:nth-child(2) .colGrandTotal {
+  color: white;
+  background: #1e5799;
+  background: -moz-linear-gradient(top, #1e5799 0%, #163f6e 60%, #266fc4 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #1e5799 0%, #163f6e 60%, #266fc4 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #1e5799 0%, #163f6e 60%, #266fc4 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot tr.headerRow:nth-child(3) th {
+  color: white;
+  border-right: #ccc 1px solid;
+  border-bottom: #ccc 1px solid;
+}
+table.pivot tr.headerRow:nth-child(3) .coltitle {
+  background-color: #2e7cd6;
+}
+table.pivot tr.headerRow:nth-child(3) .cell {
+  color: white;
+  background: #4389da;
+  background: -moz-linear-gradient(top, #4389da 0%, #266fc4 60%, #6ea4e2 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #4389da 0%, #266fc4 60%, #6ea4e2 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #4389da 0%, #266fc4 60%, #6ea4e2 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot tr.headerRow:nth-child(3) .colGrandTotal {
+  color: white;
+  background: #266fc4;
+  background: -moz-linear-gradient(top, #266fc4 0%, #1e5799 60%, #4389da 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #266fc4 0%, #1e5799 60%, #4389da 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #266fc4 0%, #1e5799 60%, #4389da 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot tr.headerRow:nth-child(4) th {
+  color: white;
+  border-right: #ccc 1px solid;
+  border-bottom: #ccc 1px solid;
+}
+table.pivot tr.headerRow:nth-child(4) .coltitle {
+  background-color: #5896de;
+}
+table.pivot tr.headerRow:nth-child(4) .cell {
+  color: white;
+  background: #6ea4e2;
+  background: -moz-linear-gradient(top, #6ea4e2 0%, #4389da 60%, #98beeb 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #6ea4e2 0%, #4389da 60%, #98beeb 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #6ea4e2 0%, #4389da 60%, #98beeb 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot tr.headerRow:nth-child(4) .colGrandTotal {
+  color: white;
+  background: #4389da;
+  background: -moz-linear-gradient(top, #4389da 0%, #266fc4 60%, #6ea4e2 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #4389da 0%, #266fc4 60%, #6ea4e2 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #4389da 0%, #266fc4 60%, #6ea4e2 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot .measureTitle {
+  color: white;
+  background: #b0d0d0;
+  background: -moz-linear-gradient(top, #b0d0d0 0%, #90bdbd 60%, #d0e3e3 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #b0d0d0 0%, #90bdbd 60%, #d0e3e3 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #b0d0d0 0%, #90bdbd 60%, #d0e3e3 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  white-space: nowrap;
+}
+table.pivot tr.dataRow td,
+table.pivot tr.dataRow th {
+  border-bottom: #ddd 1px solid;
+}
+table.pivot tr.dataRow:hover {
+  background-color: #eee;
+}
+table.pivot tr.dataRow th.cell {
+  vertical-align: top;
+  border-right: #ccc 1px solid;
+  border-bottom: #ccc 1px solid;
+}
+table.pivot tr.dataRow th.cell.ch-0 {
+  color: white;
+  background: #799a79;
+  background: -moz-linear-gradient(top, #799a79 0%, #608060 60%, #96b096 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #799a79 0%, #608060 60%, #96b096 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #799a79 0%, #608060 60%, #96b096 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot tr.dataRow th.cell.ch-1 {
+  color: white;
+  background: #96b096;
+  background: -moz-linear-gradient(top, #96b096 0%, #799a79 60%, #b3c6b3 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #96b096 0%, #799a79 60%, #b3c6b3 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #96b096 0%, #799a79 60%, #b3c6b3 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot tr.dataRow th.cell.ch-2 {
+  color: white;
+  background: #b3c6b3;
+  background: -moz-linear-gradient(top, #b3c6b3 0%, #96b096 60%, #d0dcd0 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #b3c6b3 0%, #96b096 60%, #d0dcd0 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #b3c6b3 0%, #96b096 60%, #d0dcd0 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+table.pivot tr.dataRow th.cell.GrandTotal {
+  color: white;
+  background: #4a634a;
+  background: -moz-linear-gradient(top, #4a634a 0%, #344634 60%, #608060 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #4a634a 0%, #344634 60%, #608060 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #4a634a 0%, #344634 60%, #608060 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}

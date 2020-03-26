@@ -1,0 +1,31 @@
+﻿@model ASP.Net_Sample.Controllers.HomeController.IndexViewModel
+@{
+    ViewBag.Title = "Total / Sub Total";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@Html.RenderPivotTable(Model.pivot, Model.Option)
+
+<h2>Code</h2>
+
+<h4>HomeController</h4>
+<pre><code class="lang-c#">
+public ActionResult Total(IndexViewModel model) {
+    model.pivot = SampleDB.Data.ToPivotTable(
+                        PivotColumn<MockData>.Build("country", "gender"),
+                        PivotColumn<MockData>.Build("stock_market"),
+                        PivotMeasure<MockData>.Build("stock")
+                    );
+    model.Option.Header[HeaderType.Row].RenderTotal = true;
+    model.Option.HeaderCellOption[model.pivot.ColumnByName("country")].RenderTotal = true;
+    return View(model);
+}
+</code></pre>
+
+<h4>Index.cshtml</h4>
+
+<pre><code class="lang-c#">
+    @Html.Raw("@Html.RenderPivotTable(Model.pivot, Model.Option)")
+</code></pre>
+

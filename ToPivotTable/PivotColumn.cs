@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace qyen.Linq {
+namespace qyen.Pivot {
     /// <summary>
     /// Column(Row) definition
     /// </summary>
@@ -110,7 +110,7 @@ namespace qyen.Linq {
         /// <summary>
         /// Column what contain this cell
         /// </summary>
-        internal PivotColumn<T> Column { get; set; }
+        public PivotColumn<T> Column { get; internal set; }
         /// <summary>
         /// lowest level cells count of progeny
         /// </summary>

@@ -1,0 +1,29 @@
+﻿@model ASP.Net_Sample.Controllers.HomeController.IndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Basic Sample</h1>
+
+@Html.RenderPivotTable(Model.pivot, Model.Option)
+
+<h2>Code</h2>
+
+<h4>HomeController</h4>
+<pre><code class="lang-c#">
+public ActionResult Index(IndexViewModel model) {
+    model.pivot = SampleDB.Data.ToPivotTable(
+                        PivotColumn<MockData>.Build("country", "gender"), 
+                        PivotColumn<MockData>.Build("stock_market"), 
+                        PivotMeasure<MockData>.Build("stock")
+                    );
+    return View(model);
+}
+</code></pre>
+
+<h4>Index.cshtml</h4>
+
+<pre><code class="lang-c#">
+    @Html.Raw("@Html.RenderPivotTable(Model.pivot, Model.Option)")
+</code></pre>
+

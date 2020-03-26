@@ -1,0 +1,92 @@
+﻿@model ASP.Net_Sample.Controllers.HomeController.IndexViewModel
+@{
+    ViewBag.Title = "Fixed Header";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@Html.RenderPivotTable(Model.pivot, Model.Option)
+
+<h2>Code</h2>
+
+<h4>HomeController</h4>
+same as @Html.ActionLink("Custom Column", "CustomColumn")
+
+<h4>Index.cshtml</h4>
+
+<pre><code class="lang-c#">
+    @Html.Raw("@Html.RenderPivotTable(Model.pivot, Model.Option)")
+    @Html.Raw("@Scripts.Render(\"~/bundles/jquery\")")
+    @Html.Raw("@Scripts.Render(\"~/Scripts/StickyHeader.js\")")
+
+&lt;style type="text/css">
+div.pivot-host {
+    height: 800px;
+    width: 100%;
+    overflow: auto;
+}
+&lt;/style>
+</code></pre>
+
+
+<h4>StickyHeader.js</h4>
+
+<pre><code class="lang-javascript">
+$(function () {
+    let table = $("table.pivot");
+    let fixedRow = table.data("hrows");
+    let fixedCol = table.data("hcols");
+    let top = 0;
+    for (let i = 0; i < fixedRow; i++) {
+        let cell = $("table.pivot>thead>tr.headerRow>.cell.rh-" + i);
+        if (cell.length === 0) break;
+        $("table.pivot>thead>tr.headerRow>.rh-" + i).css({
+            "position": "sticky",
+            "top": top,
+            "z-index": 1
+        });
+        top += cell.outerHeight();
+    }
+    $("table.pivot>thead>tr.headerRow>.measureTitle").css({
+        "position": "sticky",
+        "top": top,
+        "z-index": 1
+    });
+    $("table.pivot>thead>tr.headerRow>.rowtitle").css({
+        "position": "sticky",
+        "top": top,
+        "z-index": 1
+    });
+
+    let left = 0;
+    for (let i = 0; i < fixedCol; i++) {
+        let cell = $("table.pivot tr.dataRow .ch-" + i);
+        if (cell.length === 0) break;
+        $("table.pivot .ch-" + i).css({
+            "position": "sticky",
+            "left": left,
+            "z-index": 2
+        });
+        left += cell.outerWidth();
+    }
+    $("table.pivot tr.dataRow .measureTitle").css({
+        "position": "sticky",
+        "left": left,
+        "z-index": 2
+    });
+    $(".cornerHeader").css("z-index", 3);
+    $(".coltitle ,.rowtitle").css("z-index", 3);
+
+});
+</code></pre>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/StickyHeader.js")
+<style type="text/css">
+    div.pivot-host {
+        height: 800px;
+        width: 100%;
+        overflow: auto;
+    }
+</style>
+

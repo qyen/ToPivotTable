@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace qyen.Linq {
+namespace qyen.Pivot {
     public class PivotTable<T> {
         private IList<PivotColumn<T>> __RowHeaders;
         private IList<PivotColumn<T>> __ColHeaders;
@@ -13,6 +13,18 @@ namespace qyen.Linq {
         private IEnumerable<T> __source;
         public IEnumerable<PivotColumn<T>> RowHeaders => __RowHeaders.ToList();
         public IEnumerable<PivotColumn<T>> ColHeaders => __ColHeaders.ToList();
+        /// <summary>
+        /// Enumerate All(Column and Row) Headers
+        /// </summary>
+        public IEnumerable<PivotColumn<T>> AllHeaders {
+            get {
+                foreach (var c in __RowHeaders)
+                    yield return c;
+                foreach (var c in __ColHeaders)
+                    yield return c;
+            }
+        }
+        public PivotColumn<T> ColumnByName(string name) => AllHeaders.FirstOrDefault(c => c.PropertyName == name);
         public IEnumerable<PivotMeasure<T>> Measures => __Measures.ToList();
 
         internal PivotTable(IEnumerable<T> source, IList<PivotColumn<T>> rowHeaders, IList<PivotColumn<T>> colHeaders, IList<PivotMeasure<T>> measures) {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace qyen.Linq {
+namespace qyen.Pivot {
     /// <summary>
     /// Pivot measure
     /// </summary>
@@ -70,11 +70,11 @@ namespace qyen.Linq {
         public Func<IEnumerable<decimal>, decimal> aggregate { get; protected set; } = aggregate_sum;
 
         #region aggregate functions
-        private static Func<IEnumerable<decimal>, decimal> aggregate_sum = (list) => list.Sum();
-        private static Func<IEnumerable<decimal>, decimal> aggregate_count = (list) => list.Count();
-        private static Func<IEnumerable<decimal>, decimal> aggregate_average = (list) => list.Average();
-        private static Func<IEnumerable<decimal>, decimal> aggregate_max = (list) => list.Max();
-        private static Func<IEnumerable<decimal>, decimal> aggregate_min = (list) => list.Min();
+        private static Func<IEnumerable<decimal>, decimal> aggregate_sum = (list) => list.Any()?list.Sum():0;
+        private static Func<IEnumerable<decimal>, decimal> aggregate_count = (list) => list.Any() ? list.Count():0;
+        private static Func<IEnumerable<decimal>, decimal> aggregate_average = (list) => list.Any() ? list.Average():0;
+        private static Func<IEnumerable<decimal>, decimal> aggregate_max = (list) => list.Any() ? list.Max():0;
+        private static Func<IEnumerable<decimal>, decimal> aggregate_min = (list) => list.Any() ? list.Min():0;
         #endregion
 
     }
