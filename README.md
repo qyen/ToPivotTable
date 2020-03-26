@@ -1,6 +1,6 @@
 # ToPivotTable
 
-IEnumerable<T>をPivotTable風に変換するライブラリ。
+IEnumerable&lt;T>をPivotTable風に変換するライブラリ。
 
 
 ![images/ss1.png](images/ss1.png)
@@ -301,4 +301,31 @@ $(function () {
 
 });
 ```
+
+## これから実装したい
+
+現状IEnumerable&lt;T>を集計するために直接クエリを発行している。
+これだと集計をかけるために一度全部メモリに載せなければいけないのは流石にリッチすぎるので、先にPivotColumn/PivotMeasureの定義に従いLinqToEntityなんかで集計してから、整形のためにToPivotを使うような流れにしたい。
+
+```cs
+// parameter : IEnumerable<T> source
+
+var listed = source
+    .GroupBy(t=>new {/*PivotColumnの定義からキーを作る*/})
+    .Select(grp=> new {
+        leadObject = grp.First(),
+        Count_stock = grp.Count(), // Measureの集計をしておく
+        Sum_stock = grp.Sum(t=>t.stock),
+    })
+    .ToList()
+    .Select(obj=>{
+        var res = (T)obj.MemberwiseClone();
+        res./* Measure用の集計値を保存 */
+    });
+```
+
+的な。
+
+その場合Measureの値を保存するためにTに新しいプロパティを追加する必要があるのでそのへんをどうするか。
+Tを継承したクラスを作り出して使うとか?
 
