@@ -14,29 +14,29 @@ mvc5で使えるようヘルパを同梱してる。
 ## つかいかた
 
 ```cs
-    public class MockData {
-        public int id { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public string company { get; set; }
-        public string gender { get; set; }
-        public string car { get; set; }
-        public string country { get; set; }
-        public string Job { get; set; }
-        public string stock_market { get; set; }
-        public decimal stock { get; set; }
-        public decimal cash { get; set; }
-    }
+public class MockData {
+    public int id { get; set; }
+    public string first_name { get; set; }
+    public string last_name { get; set; }
+    public string company { get; set; }
+    public string gender { get; set; }
+    public string car { get; set; }
+    public string country { get; set; }
+    public string Job { get; set; }
+    public string stock_market { get; set; }
+    public decimal stock { get; set; }
+    public decimal cash { get; set; }
+}
 ```
 
 というモデルに対して
 
 ```cs
     var pivot = SampleDB.Data.ToPivotTable(
-                    PivotColumn<MockData>.Build("country", "gender"), // 行に展開される軸
-                    PivotColumn<MockData>.Build("stock_market"), // 列に展開される軸
-                    PivotMeasure<MockData>.Build("stock") // 集計する値
-                );
+        PivotColumn<MockData>.Build("country", "gender"), // 行に展開される軸
+        PivotColumn<MockData>.Build("stock_market"), // 列に展開される軸
+        PivotMeasure<MockData>.Build("stock") // 集計する値
+    );
 ```
 
 と `ToPivotTable()` とするだけでピボットが作成できる。
@@ -63,36 +63,36 @@ MVC5を使用している場合はビューの`cshtml`内で
 
 ```cs
 model.pivot = SampleDB.Data.ToPivotTable(
-                    PivotColumn<MockData>.Build("country", "gender"),
-                    PivotColumn<MockData>.Build("stock_market"),
-                    new List<PivotMeasure<MockData>>() {
-                        PivotMeasure<MockData>.Count("Count",(t)=>t.stock),
-                        PivotMeasure<MockData>.Sum("Sum",(t)=>t.stock),
-                        PivotMeasure<MockData>.Average("Avg",(t)=>t.stock),
-                        PivotMeasure<MockData>.Min("Min",(t)=>t.stock),
-                        PivotMeasure<MockData>.Max("Max",(t)=>t.stock),
-                    }
-                );
+        PivotColumn<MockData>.Build("country", "gender"),
+        PivotColumn<MockData>.Build("stock_market"),
+        new List<PivotMeasure<MockData>>() {
+            PivotMeasure<MockData>.Count("Count",(t)=>t.stock),
+            PivotMeasure<MockData>.Sum("Sum",(t)=>t.stock),
+            PivotMeasure<MockData>.Average("Avg",(t)=>t.stock),
+            PivotMeasure<MockData>.Min("Min",(t)=>t.stock),
+            PivotMeasure<MockData>.Max("Max",(t)=>t.stock),
+        }
+    );
 ```
 
 ### 計算結果を集計軸に使用する
 
 ```cs
 model.pivot = DB.ToPivotTable(
-                    new List<PivotColumn<MockData>>() {
-                        new PivotColumn<MockData>("initial",(t)=>t.car.Substring(0,1),(t)=>t.car.Substring(0,1)){
-                            Order=PivotOrder.Descending,
-                        },
-                        new PivotColumn<MockData>("car"),
-                    },
-                    new List<PivotColumn<MockData>>() {
-                        new PivotColumn<MockData>("category",(t)=>t.Job.Split(' ').First(),(t)=>t.Job.Split(' ').First()),
-                        new PivotColumn<MockData>("Job",(t)=>string.Join(" ",t.Job.Split(' ').Skip(1))),
-                    },
-                    new List<PivotMeasure<MockData>>() {
-                        PivotMeasure<MockData>.Average("Avg.Cash",(t)=>t.cash),
-                    }
-                );
+        new List<PivotColumn<MockData>>() {
+            new PivotColumn<MockData>("initial",(t)=>t.car.Substring(0,1),(t)=>t.car.Substring(0,1)){
+                Order=PivotOrder.Descending,
+            },
+            new PivotColumn<MockData>("car"),
+        },
+        new List<PivotColumn<MockData>>() {
+            new PivotColumn<MockData>("category",(t)=>t.Job.Split(' ').First(),(t)=>t.Job.Split(' ').First()),
+            new PivotColumn<MockData>("Job",(t)=>string.Join(" ",t.Job.Split(' ').Skip(1))),
+        },
+        new List<PivotMeasure<MockData>>() {
+            PivotMeasure<MockData>.Average("Avg.Cash",(t)=>t.cash),
+        }
+    );
 ```
 
 とする。
@@ -110,11 +110,11 @@ public PivotColumn(string PropertyName, Func<T, string> titleGetter = null, Func
 ### 行列を入れ替える
 
 ```cs
-    var pivot = SampleDB.Data.ToPivotTable(
-                    PivotColumn<MockData>.Build("country", "gender"), // 行に展開される軸
-                    PivotColumn<MockData>.Build("stock_market"), // 列に展開される軸
-                    PivotMeasure<MockData>.Build("stock") // 集計する値
-                ).flip();
+var pivot = SampleDB.Data.ToPivotTable(
+        PivotColumn<MockData>.Build("country", "gender"), // 行に展開される軸
+        PivotColumn<MockData>.Build("stock_market"), // 列に展開される軸
+        PivotMeasure<MockData>.Build("stock") // 集計する値
+    ).flip();
 ```
 
 `flip()`を使う
