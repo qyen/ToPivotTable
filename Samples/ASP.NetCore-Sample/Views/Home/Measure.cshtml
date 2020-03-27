@@ -1,0 +1,35 @@
+﻿@model ASP.NetCore_Sample.Controllers.HomeController.IndexViewModel
+@using  ToPivotTable.MVC.Core
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Measure Sample</h1>
+
+@Html.RenderPivotTable(Model.pivot, Model.Option)
+
+<h2>Code</h2>
+
+<h4>HomeController</h4>
+<pre><code class="lang-c#">
+public ActionResult Measure(IndexViewModel model) {
+    model.pivot = SampleDB.Data.ToPivotTable(
+                        PivotColumn<MockData>.Build("country", "gender"),
+                        PivotColumn<MockData>.Build("stock_market"),
+                        new List<PivotMeasure<MockData>>() {
+                            PivotMeasure<MockData>.Sum("Sum",(t)=>t.stock),
+                            PivotMeasure<MockData>.Average("Avg",(t)=>t.stock),
+                            PivotMeasure<MockData>.Min("Min",(t)=>t.stock),
+                            PivotMeasure<MockData>.Max("Max",(t)=>t.stock),
+                        }
+                    );
+    return View(model);
+}
+</code></pre>
+
+<h4>Index.cshtml</h4>
+
+<pre><code class="lang-c#">
+    @Html.Raw("@Html.RenderPivotTable(Model.pivot, Model.Option)")
+</code></pre>
+

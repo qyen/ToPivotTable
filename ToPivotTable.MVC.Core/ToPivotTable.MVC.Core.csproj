@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>qyen.Pivot.Mvc5</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\ToPivotTable.MVC5\PivotTableColumnRender.cs" Link="PivotTableColumnRender.cs" />
+    <Compile Include="..\ToPivotTable.MVC5\PivotTableHeaderRender.cs" Link="PivotTableHeaderRender.cs" />
+    <Compile Include="..\ToPivotTable.MVC5\PivotTableRender.cs" Link="PivotTableRender.cs" />
+    <Compile Include="..\ToPivotTable.MVC5\PivotTableRenderOption.cs" Link="PivotTableRenderOption.cs" />
+    <Compile Include="..\ToPivotTable.MVC5\PivotTableTotalColumnRender.cs" Link="PivotTableTotalColumnRender.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\ToPivotTable.MVC5\Properties\Resources.ja-JP.resx" Link="Properties\Resources.ja-JP.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToPivotTable.Core\ToPivotTable.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

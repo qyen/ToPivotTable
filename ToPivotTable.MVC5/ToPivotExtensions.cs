@@ -10,7 +10,7 @@ namespace System.Web.Mvc {
             if (option == null)
                 option = new PivotTableRenderOption<T>();
 
-            return PivotTableRender.Run(pivotTable, option);
+            return MvcHtmlString.Create( new PivotTableRender<T>(pivotTable, option).Run());
         }
     }
 }

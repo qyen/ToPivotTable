@@ -1,0 +1,202 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+
+table.pivot {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0px;
+    @ColHeaderBaseColor: #1E5799;
+    @RowHeaderBaseColor: #608060;
+    @BorderColor: #ddd;
+    @measureTitleColor: #b0d0d0;
+
+    .number {
+        text-align: right;
+    }
+
+    .rowtitle {
+        .gradientCell(darken(@RowHeaderBaseColor,10%));
+    }
+
+    th, td {
+        padding: 5px;
+        white-space: nowrap;
+    }
+
+    .cornerHeader {
+        background-color: white;
+    }
+
+    .gradientCell(@CellBaseColor) {
+        color: white;
+        background: @CellBaseColor;
+        background: -moz-linear-gradient(top, @CellBaseColor 0%, darken(@CellBaseColor,10%) 60%, lighten(@CellBaseColor,10%) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, @CellBaseColor 0%, darken(@CellBaseColor,10%) 60%, lighten(@CellBaseColor,10%) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, @CellBaseColor 0%, darken(@CellBaseColor,10%) 60%, lighten(@CellBaseColor,10%) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+
+    .headerRowMixin(@ColHeaderBGColor: @ColHeaderBaseColor) {
+        th {
+            color: white;
+            border-right: #ccc 1px solid;
+            border-bottom: #ccc 1px solid;
+        }
+
+        .coltitle {
+            background-color: darken(@ColHeaderBGColor,5%);
+        }
+
+        .cell {
+            .gradientCell(@ColHeaderBGColor);
+        }
+
+        .colGrandTotal {
+            .gradientCell(darken(@ColHeaderBGColor,10%));
+        }
+    }
+
+    tr.headerRow:nth-child(1) {
+        .headerRowMixin(@ColHeaderBaseColor)
+    }
+
+    tr.headerRow:nth-child(2) {
+        .headerRowMixin(lighten(@ColHeaderBaseColor,10%));
+    }
+
+    tr.headerRow:nth-child(3) {
+        .headerRowMixin(lighten(@ColHeaderBaseColor,20%));
+    }
+
+    tr.headerRow:nth-child(4) {
+        .headerRowMixin(lighten(@ColHeaderBaseColor,30%));
+    }
+
+    .measureTitle {
+        .gradientCell(@measureTitleColor);
+        white-space: nowrap;
+    }
+
+    tr.dataRow {
+        td, th {
+            border-bottom: @BorderColor 1px solid;
+        }
+
+        &:hover {
+            background-color: #eee;
+        }
+
+        th.cell {
+            vertical-align: top;
+            border-right: #ccc 1px solid;
+            border-bottom: #ccc 1px solid;
+
+            &.ch-0 {
+                .gradientCell(lighten(@RowHeaderBaseColor,10%));
+            }
+
+            &.ch-1 {
+                .gradientCell(lighten(@RowHeaderBaseColor,20%));
+            }
+
+            &.ch-2 {
+                .gradientCell(lighten(@RowHeaderBaseColor,30%));
+            }
+
+            &.GrandTotal {
+                .gradientCell(darken(@RowHeaderBaseColor,10%));
+            }
+        }
+    }
+}
+
+// Blocks of code
+pre {
+    display: block;
+    padding: 12px;
+    margin: 0 0 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    // Account for some code outputs that place code tags in pre tags
+    code {
+        padding: 0;
+        font-size: inherit;
+        color: inherit;
+        white-space: pre-wrap;
+        background-color: transparent;
+        border-radius: 0;
+    }
+}
+

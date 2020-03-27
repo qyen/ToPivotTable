@@ -4,17 +4,9 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace qyen.Pivot.Mvc5 {
-    public static class PivotTableRender {
-        public static MvcHtmlString Run<TModel>(PivotTable<TModel> pivotTable, PivotTableRenderOption<TModel> option) {
-            Contract.Requires(pivotTable != null);
-            Contract.Requires(option != null);
 
-            return MvcHtmlString.Create(new PivotTableRender<TModel>(pivotTable, option).Run());
-        }
-    }
     public class PivotTableRender<T> {
         private PivotTable<T> Table { get; set; }
         private PivotTableRenderOption<T> Option { get; set; }
