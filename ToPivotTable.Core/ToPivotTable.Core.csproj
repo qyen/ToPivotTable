@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\ToPivotTable\ListExtension.cs" Link="ListExtension.cs" />
+    <Compile Include="..\ToPivotTable\PivotColumn.cs" Link="PivotColumn.cs" />
+    <Compile Include="..\ToPivotTable\PivotMeasure.cs" Link="PivotMeasure.cs" />
+    <Compile Include="..\ToPivotTable\PivotTable.cs" Link="PivotTable.cs" />
+  </ItemGroup>
+
+</Project>
