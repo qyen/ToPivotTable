@@ -75,6 +75,28 @@ model.pivot = SampleDB.Data.ToPivotTable(
     );
 ```
 
+### 集計結果を元に値を再計算する集計を行う
+
+```cs
+model.pivot = SampleDB.Data.ToPivotTable(
+        PivotColumn<MockData>.Build("country", "gender"),
+        PivotColumn<MockData>.Build("stock_market"),
+        new List<PivotMeasure<MockData>>() {
+            PivotMeasure<MockData>.Count("Count",(t)=>t.stock),
+            PivotMeasure<MockData>.Sum("Sum",(t)=>t.stock),
+            PivotMeasure<MockData>.Average("Avg",(t)=>t.stock),
+            PivotMeasure<MockData>.Min("Min",(t)=>t.stock),
+            new ComplexPivotMeasure<MockData>(
+                "AvgPrice",
+                (values)=> (values.Length==2 && values[0]!=0)?(values[1] / values[0]):0,
+                PivotMeasure<MockData>.Sum("Sum",(t)=>t.stock),
+                PivotMeasure<MockData>.Sum("Sum",(t)=>t.cost)
+            ),
+        }
+    );
+```
+ComplexPivotMeasure を使用するとMeasureの値を元に再計算を行える。
+
 ### 計算結果を集計軸に使用する
 
 ```cs
