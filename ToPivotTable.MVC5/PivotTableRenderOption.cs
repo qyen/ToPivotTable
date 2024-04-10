@@ -44,7 +44,7 @@ namespace qyen.Pivot.Mvc5{
 
     public class PivotAxisRenderOption {
         public bool RenderTotal { get; set; } = false;
-        public string TotalCssClass { get; set; } = Properties.Resources.GrandTotalCellTitle;
+        public string TotalCssClass { get; set; } = "GrandTotal";
         public string TotalTitle { get; set; } = Properties.Resources.GrandTotalCellTitle;
         public OutputPosition TotalPosition { get; set; } = OutputPosition.Below;
     }
@@ -56,7 +56,7 @@ namespace qyen.Pivot.Mvc5{
             get {
                 if (!options.ContainsKey(index)) {
                     options.Add(index, new PivotAxisRenderOption() {
-                        TotalCssClass = Properties.Resources.TotalCellTitle,
+                        TotalCssClass = "Total",
                         TotalTitle = Properties.Resources.TotalCellTitle,
                     });
                 }
